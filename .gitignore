@@ -5,7 +5,7 @@ yarn-error.log*
 node_modules/
 *.tsbuildinfo
 dist
-
+.yarn
 # managed by open-wa
 **.data.json
 **.node-persist**

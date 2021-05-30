@@ -3,6 +3,7 @@
   "version": "0.2.3",
   "description": "Description of the node set here",
   "scripts": {
+    "preinstall": "echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true'",
     "add-node": "node ./utils/add-node.js",
     "copy": "copyfiles -u 2 \"./src/nodes/**/*.{png,svg}\" \"./dist/nodes/\"",
     "build:editor": "rollup -c rollup.config.editor.js",
@@ -24,6 +25,11 @@
       "listen": "./dist/nodes/listen/listen.js",
       "cmd": "./dist/nodes/cmd/cmd.js",
       "owa-server": "./dist/nodes/owa-server/owa-server.js"
+    }
+  },
+  "dependenciesMeta": {
+    "puppeteer": {
+      "built": false
     }
   },
   "devDependencies": {
@@ -54,7 +60,11 @@
     "rollup": "^2.23.0",
     "ts-jest": "^26.4.4",
     "type-fest": "^0.8.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "yarpm": "^1.1.1"
+  },
+  "dependencies": {
+    "@open-wa/wa-automate": "^4.1.0"
   },
   "jest": {
     "testEnvironment": "node",
@@ -67,8 +77,5 @@
     "testMatch": [
       "**/__tests__/**/*.test.ts"
     ]
-  },
-  "dependencies": {
-    "@open-wa/wa-automate": "^4.1.0"
   }
 }

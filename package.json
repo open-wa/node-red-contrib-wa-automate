@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-wa-automate",
+  "name": "@open-wa/node-red-contrib-wa-automate",
   "version": "1.0.0",
   "description": "Official @open-wa node-red integration.",
   "scripts": {

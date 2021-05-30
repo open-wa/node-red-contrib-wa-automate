@@ -15,8 +15,6 @@ RED.nodes.registerType<ListenEditorNodeProperties>("listen", {
   outputs: 1,
   icon: "file.png",
   label: function () {
-    console.log(this.listener);
-    console.log(this.name);
     return this.name || this.listener || "listen";
   },
   oneditprepare: function () {

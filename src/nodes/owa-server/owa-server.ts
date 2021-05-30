@@ -12,7 +12,6 @@ const nodeInit: NodeInitializer = async (RED): Promise<void> => {
     this.url = config.url;
     this.key = config.key;
     this.getSocket = async () => {
-      console.log(this, this.socket)
       if (!this.socket) {
         if (this.url) {
           this.socket = await SocketClient.connect(this.url, this.key)

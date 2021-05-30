@@ -16,7 +16,6 @@ const nodeInit: NodeInitializer = (RED): void => {
           this.server.getSocket().then(socket => {
             if(socket) {
               socket.listen(this.listener,(message)=>{
-                console.log("🚀 ~ file: listen.ts ~ line 20 ~ this.server.socket?.listen ~ message", message)
                 this.send({
                   payload: message
                 });

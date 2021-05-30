@@ -1,3 +1,4 @@
+import { OwaServerNode } from './../owa-server/modules/types';
 import { NodeInitializer } from "node-red";
 import { ListenNode, ListenNodeDef } from "./modules/types";
 
@@ -7,26 +8,27 @@ const nodeInit: NodeInitializer = (RED): void => {
     config: ListenNodeDef
   ): void {
     RED.nodes.createNode(this, config);
-
-    
-        // Retrieve the config node
+    this.name = config.name;
+    this.listener = config.listener;
         if(config.server)
-        this.server = RED.nodes.getNode(config.server);
-
+        this.server = RED.nodes.getNode(config.server) as OwaServerNode;
         if (this.server) {
-            // Do something with:
-            //  this.server.host
-            //  this.server.port
+          this.server.getSocket().then(socket => {
+            if(socket) {
+              socket.listen(this.listener,(message)=>{
+                console.log("🚀 ~ file: listen.ts ~ line 20 ~ this.server.socket?.listen ~ message", message)
+                this.send({
+                  payload: message
+                });
+              })
+            } else {
+              this.error("socket connection not established!")
+            }
+          })
         } else {
             // No config node configured
+            this.error("No Server!")
         }
-
-
-
-    this.on("input", (msg, send, done) => {
-      send(msg);
-      done();
-    });
   }
 
   RED.nodes.registerType("listen", ListenNodeConstructor);

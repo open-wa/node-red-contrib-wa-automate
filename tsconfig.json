@@ -8,6 +8,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",
+    "skipLibCheck": true,
     "removeComments": false,
     "noEmit": false,
     "importHelpers": false,

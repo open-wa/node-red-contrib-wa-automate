@@ -4,4 +4,6 @@ import { ListenOptions } from "../../shared/types";
 
 export interface ListenEditorNodeProperties
   extends EditorNodeProperties,
-    ListenOptions, ServerSubscriber {} 
+    ListenOptions, ServerSubscriber {
+      listener: string
+    } 

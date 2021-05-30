@@ -1,3 +1,6 @@
 export interface CmdOptions {
-  // node options
+  method?: string,
+  args ?: {
+    [k: string] : boolean | number | string | undefined
+  }
 }

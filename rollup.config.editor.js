@@ -62,11 +62,16 @@ const makeConfigItem = (nodeType) => ({
   output: {
     file: `dist/nodes/${nodeType}/${nodeType}.html`,
     format: "iife",
+    globals: {
+    }
   },
   plugins: makePlugins(nodeType),
   watch: {
     clearScreen: false,
   },
+  external: [
+    // '@open-wa/wa-automate/dist/api/model'
+  ]
 });
 
 export default allNodeTypes.map((nodeType) => makeConfigItem(nodeType));

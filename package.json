@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-wa-automate",
-  "version": "0.2.3",
-  "description": "Description of the node set here",
+  "version": "1.0.0",
+  "description": "Official @open-wa node-red integration.",
   "scripts": {
     "preinstall": "echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true'",
     "add-node": "node ./utils/add-node.js",
@@ -17,11 +17,10 @@
     "lint": "prettier --ignore-path .eslintignore --check '**/*.{js,ts,md}'; eslint --ext .js,.ts .",
     "lint:fix": "prettier --ignore-path .eslintignore --write '**/*.{js,ts,md}'; eslint --ext .js,.ts . --fix"
   },
-  "author": "Alex Kaul",
-  "license": "MIT",
+  "author": "Mohammed Shah <@smashah>",
+  "license": "H-DNH V1.0",
   "node-red": {
     "nodes": {
-      "transform-text": "./dist/nodes/transform-text/transform-text.js",
       "listen": "./dist/nodes/listen/listen.js",
       "cmd": "./dist/nodes/cmd/cmd.js",
       "owa-server": "./dist/nodes/owa-server/owa-server.js"

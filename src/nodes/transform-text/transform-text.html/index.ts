@@ -5,7 +5,7 @@ import { TransformTextOperation } from "../shared/types";
 declare const RED: EditorRED;
 
 RED.nodes.registerType<TransformTextEditorNodeProperties>("transform-text", {
-  category: "function",
+  category: "wa",
   color: "#a6bbcf",
   defaults: {
     operation: { value: TransformTextOperation.UpperCase },

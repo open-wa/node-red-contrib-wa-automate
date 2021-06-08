@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com//open-wa/node-red-contrib-wa-automate/master/assets/hero.png"/>
+<img src="https://raw.githubusercontent.com/open-wa/node-red-contrib-wa-automate/master/assets/hero.png?token=ABNBLTOYLTDRFNR4R5DBB2TAX5XXS"/>
 
 # @open-wa/node-red-contrib-wa-automate
 

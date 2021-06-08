@@ -1,6 +1,6 @@
 {
   "name": "@open-wa/node-red-contrib-wa-automate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official @open-wa node-red integration.",
   "publishConfig": {
     "access": "public"

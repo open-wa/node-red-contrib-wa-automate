@@ -9,11 +9,9 @@
 
 ## Getting Started
 
-Documentation can be found [here](https://zachowj.github.io/node-red-contrib-home-assistant-websocket/).
-
 ### Prerequisites
 
-Have Node-RED installed and working, if you need to install Node-RED see [here](https://nodered.org/docs/getting-started/installation. Also ensure you have an authenticated and up-to-date EASY API session running with the `--socket` flag.
+Have Node-RED installed and working, if you need to install Node-RED see [here](https://nodered.org/docs/getting-started/installation). Also ensure you have an authenticated and up-to-date EASY API session running with the `--socket` flag.
 
 - [Node.js](https://nodejs.org) v14.15.0 or newer
 - [NPM](https://nodejs.org) v7.12.0 or newer

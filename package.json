@@ -2,6 +2,7 @@
   "name": "@open-wa/node-red-contrib-wa-automate",
   "version": "1.0.0",
   "description": "Official @open-wa node-red integration.",
+  "repository": "https://github.com/open-wa/node-red-contrib-wa-automate",
   "scripts": {
     "preinstall": "echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true'",
     "add-node": "node ./utils/add-node.js",
@@ -63,7 +64,7 @@
     "yarpm": "^1.1.1"
   },
   "dependencies": {
-    "@open-wa/wa-automate": "^4.1.0"
+    "@open-wa/wa-automate": "^4.2.1"
   },
   "jest": {
     "testEnvironment": "node",

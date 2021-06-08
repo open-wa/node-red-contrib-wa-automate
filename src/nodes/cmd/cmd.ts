@@ -13,30 +13,32 @@ const nodeInit: NodeInitializer = (RED): void => {
     this.name = config.name;
     this.method = config.method;
     this.args = config.args;
-
+    
     this.on("input", (msg, send, done) => {
       const m = msg as {
         method?: string,
-        args ?: {
-          [k: string] : boolean | string | number
+        args?: {
+          [k: string]: boolean | string | number
         }
       }
-      send(msg);
-      if(config.server)
-      this.server = RED.nodes.getNode(config.server) as OwaServerNode;
-      if (this.server) {
-        this.server.getSocket().then(async socket => {
-          if(socket) {
-            send({
-              payload: await socket.ask((m.method || this.method) as keyof Client, m.args || this.args)
-            })
-          } else {
-            this.error("socket connection not established!")
-          }
-        })
+      if (config.server)
+        this.server = RED.nodes.getNode(config.server) as OwaServerNode;
+      const executeCommand = () => this.server?.client.ask((m.method || this.method) as keyof Client, m.args || this.args).then(payload => send({
+        payload
+      })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' }))
+      if (this.server && this.server.client) {
+        this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });
+        if (this.server.clientSocket.connected) {
+          executeCommand()
+        } else {
+          this.status({ fill: 'red', shape: 'ring', text: 'Waiting for socket connection..' });
+          this.server.addListener("connected", () => {
+            executeCommand()
+          });
+        }
       } else {
-          // No config node configured
-          this.error("No Server!")
+        // No config node configured
+        this.error("No Server!")
       }
 
       done();

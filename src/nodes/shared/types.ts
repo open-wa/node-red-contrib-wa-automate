@@ -1,3 +1,7 @@
+import { SocketClient } from '@open-wa/wa-automate';
+
+export const CLIENT_STORE = "waClients"
+
 export interface EasyAPIServer {
     /**
      * The URL of the EASY API instance
@@ -12,4 +16,9 @@ export interface EasyAPIServer {
 
   export interface ServerSubscriber {
     server: string
+  }
+
+
+  export interface ClientStore {
+    [id : string] : SocketClient
   }

@@ -6,14 +6,14 @@ declare const RED: EditorRED;
 RED.nodes.registerType<ListenEditorNodeProperties>("listen", {
   category: "wa",
   paletteLabel: "Listen",
-  color: "#a6bbcf",
+  color: "#AAAA66",
   defaults: {
     name: { value: "" },
     server: { value: "", type: "owa-server" },
     listener: { value: "onMessage" },
   },
   outputs: 1,
-  icon: "file.png",
+  icon: "arrow-in.svg",
   label: function () {
     return this.name || this.listener || "listen";
   },
@@ -37,16 +37,10 @@ RED.nodes.registerType<ListenEditorNodeProperties>("listen", {
       "onRemovedFromGroup",
       "onContactAdded"
     ];
-
     options.map((option) =>
       $("#node-input-listener").append(
         new Option(option, option, undefined, option === this.listener)
       )
     );
-
-    //   $("#node-input-listener").typedInput({
-    //     types:["msg", "flow","global"],
-    //     typeField: "#node-input-listener-type"
-    // })
   },
 });

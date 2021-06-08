@@ -7,6 +7,7 @@ export interface OwaServerNodeDef extends NodeDef, OwaServerOptions, EasyAPIServ
 
 // export interface OwaServerNode extends Node {}
 export type OwaServerNode = Node & EasyAPIServer & {
-    socket ?: SocketClient,
+    client : SocketClient,
+    clientSocket : SocketClient["socket"],
     getSocket : () => Promise<SocketClient | undefined>
 };

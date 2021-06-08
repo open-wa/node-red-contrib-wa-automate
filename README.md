@@ -33,7 +33,7 @@ Have Node-RED installed and working, if you need to install Node-RED see [here](
 # If this is the first time you are running the EASY API, you will need to scan the qr code.
 ```
 
-### Instalation
+### Installation
 
 ```bash
 PUPPETEER_SKIP_DOWNLOAD=true npm install @open-wa/node-red-contrib-wa-automate

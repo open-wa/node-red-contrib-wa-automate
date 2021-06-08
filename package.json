@@ -2,6 +2,9 @@
   "name": "@open-wa/node-red-contrib-wa-automate",
   "version": "1.0.0",
   "description": "Official @open-wa node-red integration.",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "https://github.com/open-wa/node-red-contrib-wa-automate",
   "scripts": {
     "preinstall": "echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true'",

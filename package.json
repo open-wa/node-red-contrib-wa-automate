@@ -1,11 +1,16 @@
 {
   "name": "@open-wa/node-red-contrib-wa-automate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official @open-wa node-red integration.",
   "publishConfig": {
     "access": "public"
   },
   "repository": "https://github.com/open-wa/node-red-contrib-wa-automate",
+    "keywords": [ "node-red",
+      "whatsapp",
+      "javascript",
+      "bot",
+      "automation" ],
   "scripts": {
     "preinstall": "echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true'",
     "add-node": "node ./utils/add-node.js",

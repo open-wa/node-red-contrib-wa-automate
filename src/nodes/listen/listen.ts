@@ -23,15 +23,15 @@ const nodeInit: NodeInitializer = (RED): void => {
       const client = () => getSocket(this.context().global, config.server);
       const registerCallback = () => {
         if(listenerSet) return;
-        if(this.callbackId) client().stopListener(this.listener, this.callbackId)
-        client().listen(this.listener,this.listenerFn).then(callbackId => {
+        if(this.callbackId) client()?.stopListener(this.listener, this.callbackId)
+        client()?.listen(this.listener,this.listenerFn).then(callbackId => {
           this.callbackId = callbackId
           listenerSet = true;
         })
       }
       if(config.server)
       if (this.server) {
-        if(client().socket.connected) {
+        if(client()?.socket.connected) {
         registerCallback();
         this.status({ fill: 'green', shape: 'dot', text: 'listening' });
         } else {
@@ -57,7 +57,7 @@ const nodeInit: NodeInitializer = (RED): void => {
 
       this.on('close', (done : () => void) => {
         listenerSet = false;
-        client().stopListener(this.listener, this.callbackId)
+        client()?.stopListener(this.listener, this.callbackId)
         this.status({});
         done();
       });

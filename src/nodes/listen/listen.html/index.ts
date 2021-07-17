@@ -18,29 +18,12 @@ RED.nodes.registerType<ListenEditorNodeProperties>("listen", {
     return this.name || this.listener || "listen";
   },
   oneditprepare: function () {
-    const options = [
-      "onMessage",
-      "onAnyMessage",
-      "onMessageDeleted",
-      "onAck",
-      "onAddedToGroup",
-      "onChatDeleted",
-      "onBattery",
-      "onChatOpened",
-      "onIncomingCall",
-      "onGlobalParticipantsChanged",
-      "onChatState",
-      "onLogout",
-      "onPlugged",
-      "onStateChanged",
-      "onStory",
-      "onRemovedFromGroup",
-      "onContactAdded"
-    ];
-    options.map((option) =>
+    $.getJSON('/node_red_init_listen',(options: string[]) => {
+      options.map((option) =>
       $("#node-input-listener").append(
         new Option(option, option, undefined, option === this.listener)
       )
     );
+    })
   },
 });

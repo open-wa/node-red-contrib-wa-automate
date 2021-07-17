@@ -13,6 +13,14 @@ const nodeInit: NodeInitializer = (RED): void => {
     this.name = config.name;
     this.method = config.method;
     this.args = config.args;
+
+    RED.httpAdmin.get("/node_red_init_call", (req, res) => {
+      this.server = RED.nodes.getNode(config.server) as OwaServerNode;
+      if(!this.server?.client.socket){
+        return "Please set a server first!"
+      }
+      this.server?.client.socket.emit("node_red_init_call",(data:unknown)=>res.json(data))
+    })
     
     this.on("input", (msg, send, done) => {
       const m = msg as {

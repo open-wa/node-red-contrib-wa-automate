@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { EditorRED } from "node-red";
-import { methods } from "./methods";
 import { CmdEditorNodeProperties } from "./modules/types";
 
 declare const RED: EditorRED;
@@ -26,14 +25,28 @@ RED.nodes.registerType<CmdEditorNodeProperties>("cmd", {
       default: "json",
       types: ["json"]
     })
-    
-    Object.keys(methods).map((method) =>
-      $("#node-input-method").append(
-        new Option(method, method, undefined, method === this.method)
+    $.getJSON('/node_red_init_call',(data) => {
+      //... does stuff with data
+      if(typeof data == "string") return $("#node-input-method").append(
+        new Option(data, data, undefined, true)
       )
-    );
-    //@ts-ignore
-    $("#node-input-method").on('change', event=>$('#node-input-args').typedInput('value',JSON.stringify(methods[event.target.value])))
+      $("#node-input-method")
+    .find('option')
+    .remove()
+
+    Object.keys(data).map((method) =>
+    $("#node-input-method").append(
+      new Option(method, method, undefined, method === this.method)
+    )
+  );
+
+  //@ts-ignore
+  $("#node-input-method").on('change', event=>$('#node-input-args').typedInput('value',JSON.stringify(data[event.target.value])))
+
+  });
+  
+
+    
     
   }
 });

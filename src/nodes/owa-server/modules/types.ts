@@ -1,4 +1,4 @@
-import { SocketClient } from '@open-wa/wa-automate';
+import { SocketClient } from '@open-wa/wa-automate-types-only';
 import { EasyAPIServer } from './../../shared/types';
 import { Node, NodeDef } from "node-red";
 import { OwaServerOptions } from "../shared/types";

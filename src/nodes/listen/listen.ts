@@ -2,7 +2,7 @@ import { OwaServerNode } from './../owa-server/modules/types';
 import { NodeContextData, NodeInitializer } from "node-red";
 import { ListenNode, ListenNodeDef } from "./modules/types";
 import { ClientStore, CLIENT_STORE } from '../shared/types';
-import { Message } from '@open-wa/wa-automate';
+import { Message } from '@open-wa/wa-automate-types-only';
 
 const nodeInit: NodeInitializer = (RED): void => {
   function ListenNodeConstructor(

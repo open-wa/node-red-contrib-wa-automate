@@ -1,4 +1,4 @@
-import { Client } from "@open-wa/wa-automate";
+import { Client } from "@open-wa/wa-automate-types-only";
 import { NodeInitializer } from "node-red";
 import { OwaServerNode } from "../owa-server/modules/types";
 import { CmdNode, CmdNodeDef } from "./modules/types";

@@ -1,4 +1,4 @@
-import { SocketClient } from '@open-wa/wa-automate';
+import { SocketClient } from '@open-wa/wa-automate-types-only';
 
 export const CLIENT_STORE = "waClients"
 

@@ -1,6 +1,6 @@
 {
   "name": "@open-wa/node-red-contrib-wa-automate",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Official @open-wa node-red integration.",
   "publishConfig": {
     "access": "public"
@@ -72,7 +72,7 @@
     "yarpm": "^1.1.1"
   },
   "dependencies": {
-    "@open-wa/wa-automate-types-only": "^4.18.0"
+    "@open-wa/wa-automate-types-only": "*"
   },
   "jest": {
     "testEnvironment": "node",

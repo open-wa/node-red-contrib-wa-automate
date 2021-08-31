@@ -6,11 +6,13 @@
     "access": "public"
   },
   "repository": "https://github.com/open-wa/node-red-contrib-wa-automate",
-    "keywords": [ "node-red",
-      "whatsapp",
-      "javascript",
-      "bot",
-      "automation" ],
+  "keywords": [
+    "node-red",
+    "whatsapp",
+    "javascript",
+    "bot",
+    "automation"
+  ],
   "scripts": {
     "preinstall": "echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true'",
     "add-node": "node ./utils/add-node.js",
@@ -72,6 +74,7 @@
     "yarpm": "^1.1.1"
   },
   "dependencies": {
+    "@open-wa/wa-automate-socket-client": "*",
     "@open-wa/wa-automate-types-only": "*"
   },
   "jest": {

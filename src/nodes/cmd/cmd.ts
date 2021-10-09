@@ -4,6 +4,7 @@ import { OwaServerNode } from "../owa-server/modules/types";
 import { CmdNode, CmdNodeDef } from "./modules/types";
 
 function tryParseJSONObject (jsonString : unknown){
+  if(typeof jsonString === "object") return jsonString;
   try {
     //@ts-ignore
       var o = JSON.parse(jsonString);
@@ -48,7 +49,10 @@ const nodeInit: NodeInitializer = (RED): void => {
         }
       }
       const method = m.method || this.method;
-      let argmnts = m.args || this.args;
+      let argmnts = m.args || {
+        ...(tryParseJSONObject(this.args) || {}),
+        ...(tryParseJSONObject(msg.payload) || {}),
+      };
       argmnts = tryParseJSONObject(argmnts) || argmnts;
       if (config.server)
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;

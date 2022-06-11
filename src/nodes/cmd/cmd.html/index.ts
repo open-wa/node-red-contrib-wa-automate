@@ -25,7 +25,7 @@ RED.nodes.registerType<CmdEditorNodeProperties>("cmd", {
       default: "json",
       types: ["json"]
     })
-    $.getJSON('/node_red_init_call',(data) => {
+    $.getJSON('node_red_init_call',(data) => {
       //... does stuff with data
       if(typeof data == "string") return $("#node-input-method").append(
         new Option(data, data, undefined, true)

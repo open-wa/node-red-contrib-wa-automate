@@ -69,8 +69,8 @@ const nodeInit: NodeInitializer = (RED): void => {
       })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' }))
       const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => setTimeout(() => {this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${this.timeout}` })}, this.timeout));
       console.log("🚀 ~ file: cmd.ts ~ line 71 ~ })).then ~ timeoutPomise", timeoutPomise, this.timeout)
-      const promises = timeoutPomise ? [executeCommand, timeoutPomise] : [executeCommand];
-      const proms = () => Promise.race(promises);
+      const proms = timeoutPomise ? () => Promise.race([executeCommand, timeoutPomise]) : () => executeCommand();
+      console.log("🚀 ~ file: cmd.ts ~ line 73 ~ })).then ~ proms", proms)
       if (this.server && this.server.client) {
         this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });
         if (this.server.clientSocket.connected) {

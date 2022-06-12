@@ -66,10 +66,10 @@ const nodeInit: NodeInitializer = (RED): void => {
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;
       const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts).then(payload => send({
         payload
-      })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' }))
+      })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' })).then(()=>true)
       const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => setTimeout(() => {this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })}, this.timeout));
       console.log("🚀 ~ file: cmd.ts ~ line 71 ~ })).then ~ timeoutPomise", timeoutPomise, this.timeout)
-      const proms = timeoutPomise ? () => Promise.race([executeCommand, timeoutPomise]) : () => executeCommand();
+      const proms = timeoutPomise ? () => Promise.race([executeCommand(), timeoutPomise]) : () => executeCommand();
       console.log("🚀 ~ file: cmd.ts ~ line 73 ~ })).then ~ proms", proms)
       if (this.server && this.server.client) {
         this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });

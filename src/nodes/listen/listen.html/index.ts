@@ -20,7 +20,6 @@ RED.nodes.registerType<ListenEditorNodeProperties>("listen", {
   oneditprepare: function () {
     try {
       $.getJSON('node_red_init_listen',(options: string[]) => {
-        console.log("🚀 ~ file: index.ts ~ line 23 ~ $.getJSON ~ options", options)
         options.map((option) =>
         $("#node-input-listener").append(
           new Option(option, option, undefined, option === this.listener)

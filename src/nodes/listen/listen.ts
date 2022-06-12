@@ -24,12 +24,10 @@ const nodeInit: NodeInitializer = (RED): void => {
 
       try {
         RED.httpAdmin.get("/node_red_init_listen", (req, res) => {
-          console.log("🚀 ~ file: listen.ts ~ line 27 ~ RED.httpAdmin.get ~ req")
           if(!this.server?.client.socket){
             return "Please set a server first!"
           }
           this.server?.client.socket.emit("node_red_init_listen",(data:unknown)=>{
-            console.log("🚀 ~ file: listen.ts ~ line 32 ~ this.server?.client.socket.emit ~ data", data)
             res.json(data)
           })
         })

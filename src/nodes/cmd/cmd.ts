@@ -60,7 +60,6 @@ const nodeInit: NodeInitializer = (RED): void => {
         ...(tryParseJSONObject(msg.payload) || {}),
       };
       argmnts = tryParseJSONObject(argmnts) || argmnts;
-      console.log(this.args, argmnts, m)
       let _t : any ;
 
       if (config.server)
@@ -83,7 +82,6 @@ const nodeInit: NodeInitializer = (RED): void => {
         }
         
       })
-      console.log("🚀 ~ file: cmd.ts ~ line 73 ~ })).then ~ proms", proms)
       if (this.server && this.server.client) {
         this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });
         if (this.server.clientSocket.connected) {

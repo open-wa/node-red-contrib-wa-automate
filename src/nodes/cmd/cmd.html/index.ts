@@ -11,7 +11,8 @@ RED.nodes.registerType<CmdEditorNodeProperties>("cmd", {
     name: { value: "" },
     server: { value: "", type: "owa-server" },
     method: { value: "" },
-    args: { value: "" }
+    args: { value: "" },
+    timeout: { value: "30", validate:RED.validators.number(true) }
   },
   inputs: 1,
   outputs: 1,

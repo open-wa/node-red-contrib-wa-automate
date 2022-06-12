@@ -10,6 +10,7 @@ export interface CmdNodeDef extends NodeDef, CmdOptions, ServerSubscriber  {}
 export type CmdNode = Node & {
     server?: OwaServerNode,
     method ?: string,
+    timeout ?: number,
     args ?: {
         [k: string]: boolean | string | number | undefined
     }

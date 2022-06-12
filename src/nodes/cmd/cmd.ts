@@ -32,6 +32,12 @@ const nodeInit: NodeInitializer = (RED): void => {
     this.name = config.name;
     this.method = config.method;
     this.args = config.args;
+    this.timeout = (config.timeout ==="-1") ? -1 : parseFloat(config.timeout as string || "30")*1000;
+
+    if (isNaN(this.timeout)) {
+      this.timeout = 30000;
+    }
+
 
     RED.httpAdmin.get("/node_red_init_call", (req, res) => {
       this.server = RED.nodes.getNode(config.server) as OwaServerNode;
@@ -59,14 +65,19 @@ const nodeInit: NodeInitializer = (RED): void => {
       const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts).then(payload => send({
         payload
       })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' }))
+      const timeoutPomise = this.timeout === -1 ? null : new Promise((res) => setTimeout(() => res("TIMEOUT"), this.timeout));
+      const promises = timeoutPomise ? [executeCommand, timeoutPomise] : [executeCommand];
+      const proms = () => Promise.race(promises).then(res=> {
+        if(res === "TIMEOUT") this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${this.timeout}` })
+      });
       if (this.server && this.server.client) {
         this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });
         if (this.server.clientSocket.connected) {
-          executeCommand()
+          proms()
         } else {
           this.status({ fill: 'red', shape: 'ring', text: 'Waiting for socket connection..' });
           this.server.addListener("connected", () => {
-            executeCommand()
+            proms()
           });
         }
       } else {

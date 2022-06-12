@@ -61,7 +61,7 @@ const nodeInit: NodeInitializer = (RED): void => {
       };
       argmnts = tryParseJSONObject(argmnts) || argmnts;
       console.log(this.args, argmnts, m)
-      let _t : Timeout;
+      let _t : any ;
 
       if (config.server)
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;

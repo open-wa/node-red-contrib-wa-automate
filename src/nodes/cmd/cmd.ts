@@ -67,27 +67,27 @@ const nodeInit: NodeInitializer = (RED): void => {
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;
       const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts).then(payload => send({
         payload
-      })).then(()=>{
-        if(_t) clearTimeout(_t)
-        this.status({ fill: 'green', shape: 'dot', text: 'Done' })
-      })
+      }))
       const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => {
         _t = setTimeout(() => {
-          this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })
-          res(true)
+          res('TIMEOUT')
         }, this.timeout)
       });
-      console.log("🚀 ~ file: cmd.ts ~ line 71 ~ })).then ~ timeoutPomise", timeoutPomise, this.timeout)
-      const proms = timeoutPomise ? () => Promise.race([executeCommand(), timeoutPomise]) : () => executeCommand();
+      const proms = timeoutPomise ? () => Promise.race([executeCommand(), timeoutPomise]) : () => executeCommand()
+      const promWithHandler = () => (proms() as Promise<any>).then((res)=>{
+        if(_t) clearTimeout(_t)
+        if(res === "TIMEOUT") this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })
+        else this.status({ fill: 'green', shape: 'dot', text: 'Done' })
+      })
       console.log("🚀 ~ file: cmd.ts ~ line 73 ~ })).then ~ proms", proms)
       if (this.server && this.server.client) {
         this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });
         if (this.server.clientSocket.connected) {
-          proms()
+          promWithHandler()
         } else {
           this.status({ fill: 'red', shape: 'ring', text: 'Waiting for socket connection..' });
           this.server.addListener("connected", () => {
-            proms()
+            promWithHandler()
           });
         }
       } else {

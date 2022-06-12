@@ -61,13 +61,22 @@ const nodeInit: NodeInitializer = (RED): void => {
       };
       argmnts = tryParseJSONObject(argmnts) || argmnts;
       console.log(this.args, argmnts, m)
+      let _t : Timeout;
 
       if (config.server)
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;
       const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts).then(payload => send({
         payload
-      })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' })).then(()=>true)
-      const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => setTimeout(() => {this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })}, this.timeout));
+      })).then(()=>{
+        if(_t) clearTimeout(_t)
+        this.status({ fill: 'green', shape: 'dot', text: 'Done' })
+      })
+      const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => {
+        _t = setTimeout(() => {
+          this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })
+          res(true)
+        }, this.timeout)
+      });
       console.log("🚀 ~ file: cmd.ts ~ line 71 ~ })).then ~ timeoutPomise", timeoutPomise, this.timeout)
       const proms = timeoutPomise ? () => Promise.race([executeCommand(), timeoutPomise]) : () => executeCommand();
       console.log("🚀 ~ file: cmd.ts ~ line 73 ~ })).then ~ proms", proms)

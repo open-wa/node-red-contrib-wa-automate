@@ -65,19 +65,23 @@ const nodeInit: NodeInitializer = (RED): void => {
 
       if (config.server)
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;
-      const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts).then(payload => send({
-        payload
-      }))
+      const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts)
       const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => {
         _t = setTimeout(() => {
           res('TIMEOUT')
         }, this.timeout)
       });
       const proms = timeoutPomise ? () => Promise.race([executeCommand(), timeoutPomise]) : () => executeCommand()
-      const promWithHandler = () => (proms() as Promise<any>).then((res)=>{
+      const promWithHandler = () => (proms() as Promise<any>).then((payload)=>{
         if(_t) clearTimeout(_t)
-        if(res === "TIMEOUT") this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })
-        else this.status({ fill: 'green', shape: 'dot', text: 'Done' })
+        if(payload === "TIMEOUT") this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${(this.timeout || 1000)/1000} seconds` })
+        else {
+          this.status({ fill: 'green', shape: 'dot', text: 'Done' })
+          send({
+            payload
+          })
+        }
+        
       })
       console.log("🚀 ~ file: cmd.ts ~ line 73 ~ })).then ~ proms", proms)
       if (this.server && this.server.client) {

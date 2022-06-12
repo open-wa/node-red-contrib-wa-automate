@@ -22,12 +22,17 @@ const nodeInit: NodeInitializer = (RED): void => {
       this.server = RED.nodes.getNode(config.server) as OwaServerNode;
       const client = () => getSocket(this.context().global, config.server);
 
-      RED.httpAdmin.get("/node_red_init_listen", (req, res) => {
-        if(!this.server?.client.socket){
-          return "Please set a server first!"
-        }
-        this.server?.client.socket.emit("node_red_init_listen",(data:unknown)=>res.json(data))
-      })
+      try {
+        RED.httpAdmin.get("/node_red_init_listen", (req, res) => {
+          console.log("🚀 ~ file: listen.ts ~ line 27 ~ RED.httpAdmin.get ~ req", req)
+          if(!this.server?.client.socket){
+            return "Please set a server first!"
+          }
+          this.server?.client.socket.emit("node_red_init_listen",(data:unknown)=>res.json(data))
+        })
+      } catch (error) {
+        console.log(error);
+      }
 
       const registerCallback = () => {
         if(listenerSet) return;

@@ -6,6 +6,7 @@ node_modules/
 *.tsbuildinfo
 dist
 .yarn
+**.tgz
 # managed by open-wa
 **.data.json
 **.node-persist**

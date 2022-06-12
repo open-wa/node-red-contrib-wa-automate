@@ -60,16 +60,17 @@ const nodeInit: NodeInitializer = (RED): void => {
         ...(tryParseJSONObject(msg.payload) || {}),
       };
       argmnts = tryParseJSONObject(argmnts) || argmnts;
+      console.log(this.args, argmnts, m)
+
       if (config.server)
         this.server = RED.nodes.getNode(config.server) as OwaServerNode;
       const executeCommand = () => this.server?.client.ask(method as keyof Client, argmnts).then(payload => send({
         payload
       })).then(()=>this.status({ fill: 'green', shape: 'dot', text: 'Done' }))
-      const timeoutPomise = this.timeout === -1 ? null : new Promise((res) => setTimeout(() => res("TIMEOUT"), this.timeout));
+      const timeoutPomise = this.timeout === -1 ? false : new Promise((res) => setTimeout(() => {this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${this.timeout}` })}, this.timeout));
+      console.log("🚀 ~ file: cmd.ts ~ line 71 ~ })).then ~ timeoutPomise", timeoutPomise, this.timeout)
       const promises = timeoutPomise ? [executeCommand, timeoutPomise] : [executeCommand];
-      const proms = () => Promise.race(promises).then(res=> {
-        if(res === "TIMEOUT") this.status({ fill: 'red', shape: 'ring', text: `Timed out. Took longer than ${this.timeout}` })
-      });
+      const proms = () => Promise.race(promises);
       if (this.server && this.server.client) {
         this.status({ fill: 'yellow', shape: 'ring', text: 'Executing..' });
         if (this.server.clientSocket.connected) {

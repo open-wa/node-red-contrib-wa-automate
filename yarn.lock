@@ -326,6 +326,11 @@
   "resolved" "https://registry.npmjs.org/@blakeembrey/template/-/template-1.0.0.tgz"
   "version" "1.0.0"
 
+"@discordjs/collection@^0.5.0":
+  "integrity" "sha512-3Vr3y4/Kl6ThOsD/cbXkK4JmjawQahbM3ojHpD6XyTEOG4fwZFMYH/NTWKFd5WZUw38iQsvGC4Kt4VkL++1hFQ=="
+  "resolved" "https://registry.npmjs.org/@discordjs/collection/-/collection-0.5.0.tgz"
+  "version" "0.5.0"
+
 "@eslint/eslintrc@^0.4.2":
   "integrity" "sha512-8nmGq/4ycLpIwzvhI4tNDmQztZ8sp+hI7cyG8i1nQDhkAbRzHpXPidRAHlNvCZQpJTKw5ItIpMw9RSToGF00mg=="
   "resolved" "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.2.tgz"
@@ -668,16 +673,17 @@
     "@nodelib/fs.scandir" "2.1.4"
     "fastq" "^1.6.0"
 
-"@open-wa/wa-automate-socket-client@^2.2.0":
-  "integrity" "sha512-fU7luYijeELDFbWTdqEwfQzfx/bOJ/jl6xpqHnaCl8nl53hzA6+efGJEqTpEUk2J5Mwo4KzrUMVd2YhUjzUVUA=="
-  "resolved" "https://registry.npmjs.org/@open-wa/wa-automate-socket-client/-/wa-automate-socket-client-2.2.0.tgz"
-  "version" "2.2.0"
+"@open-wa/wa-automate-socket-client@^3.1.0":
+  "integrity" "sha512-ZxXmFQenDD/0Ta+N5Q67iEH58JEB85DAO4Vgcgeod0LkXwCYTwAam+dpZ17P2TKrrhvtA3wtBXXGGwO4QLb4/A=="
+  "resolved" "https://registry.npmjs.org/@open-wa/wa-automate-socket-client/-/wa-automate-socket-client-3.1.0.tgz"
+  "version" "3.1.0"
   dependencies:
+    "@discordjs/collection" "^0.5.0"
     "@open-wa/wa-automate-types-only" "*"
     "debug" "^4.3.4"
-    "eventemitter2" "^6.4.5"
-    "socket.io-client" "^4.4.1"
-    "uuid" "^8.3.2"
+    "eventemitter2" "^6.4.9"
+    "socket.io-client" "^4.5.4"
+    "uuid" "^9.0.0"
 
 "@open-wa/wa-automate-types-only@*":
   "integrity" "sha512-lrsOLB7LKpUIPbcu3PdKRiknx1orP0v2gQy1dM7ROJEsIDu2nQAWUruBZFLaBJbGNY4GFlnJyw5+vnzpcu+3CQ=="
@@ -2124,21 +2130,21 @@
   dependencies:
     "once" "^1.4.0"
 
-"engine.io-client@~6.2.1":
-  "integrity" "sha512-8ZQmx0LQGRTYkHuogVZuGSpDqYZtCM/nv8zQ68VZ+JkOpazJ7ICdsSpaO6iXwvaU30oFg5QJOJWj8zWqhbKjkQ=="
-  "resolved" "https://registry.npmjs.org/engine.io-client/-/engine.io-client-6.2.2.tgz"
-  "version" "6.2.2"
+"engine.io-client@~6.4.0":
+  "integrity" "sha512-GyKPDyoEha+XZ7iEqam49vz6auPnNJ9ZBfy89f+rMMas8AuiMWOZ9PVzu8xb9ZC6rafUqiGHSCfu22ih66E+1g=="
+  "resolved" "https://registry.npmjs.org/engine.io-client/-/engine.io-client-6.4.0.tgz"
+  "version" "6.4.0"
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     "debug" "~4.3.1"
     "engine.io-parser" "~5.0.3"
-    "ws" "~8.2.3"
+    "ws" "~8.11.0"
     "xmlhttprequest-ssl" "~2.0.0"
 
 "engine.io-parser@~5.0.3":
-  "integrity" "sha512-+nVFp+5z1E3HcToEnO7ZIj3g+3k9389DvWtvJZz0T6/eOCPIyyxehFcedoYrZQrp0LgQbD9pPXhpMBKMd5QURg=="
-  "resolved" "https://registry.npmjs.org/engine.io-parser/-/engine.io-parser-5.0.4.tgz"
-  "version" "5.0.4"
+  "integrity" "sha512-tjuoZDMAdEhVnSFleYPCtdL2GXwVTGtNjoeJd9IhIG3C1xs9uwxqRNEu5WpnDZCaozwVlK/nuQhpodhXSIMaxw=="
+  "resolved" "https://registry.npmjs.org/engine.io-parser/-/engine.io-parser-5.0.6.tgz"
+  "version" "5.0.6"
 
 "enquirer@^2.3.5":
   "integrity" "sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg=="
@@ -2351,10 +2357,10 @@
   "resolved" "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   "version" "1.8.1"
 
-"eventemitter2@^6.4.5":
-  "integrity" "sha512-bXE7Dyc1i6oQElDG0jMRZJrRAn9QR2xyyFGmBdZleNmyQX0FqGYmhZIrIrpPfm/w//LTo4tVQGOGQcGCb5q9uw=="
-  "resolved" "https://registry.npmjs.org/eventemitter2/-/eventemitter2-6.4.5.tgz"
-  "version" "6.4.5"
+"eventemitter2@^6.4.9":
+  "integrity" "sha512-JEPTiaOt9f04oa6NOkc4aH+nVp5I3wEjpHbIPqfgCdD5v5bUzy7xQqwcVO2aDQgOWhI28da57HksMrzK9HlRxg=="
+  "resolved" "https://registry.npmjs.org/eventemitter2/-/eventemitter2-6.4.9.tgz"
+  "version" "6.4.9"
 
 "execa@^5.0.0":
   "integrity" "sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg=="
@@ -5070,20 +5076,20 @@
     "astral-regex" "^2.0.0"
     "is-fullwidth-code-point" "^3.0.0"
 
-"socket.io-client@^4.4.1":
-  "integrity" "sha512-e6nLVgiRYatS+AHXnOnGi4ocOpubvOUCGhyWw8v+/FxW8saHkinG6Dfhi9TU0Kt/8mwJIAASxvw6eujQmjdZVA=="
-  "resolved" "https://registry.npmjs.org/socket.io-client/-/socket.io-client-4.5.1.tgz"
-  "version" "4.5.1"
+"socket.io-client@^4.5.4":
+  "integrity" "sha512-5UswCV6hpaRsNg5kkEHVcbBIXEYoVbMQaHJBXJCyEQ+CiFPV1NIOY0XOFWG4XR4GZcB8Kn6AsRs/9cy9TbqVMQ=="
+  "resolved" "https://registry.npmjs.org/socket.io-client/-/socket.io-client-4.6.1.tgz"
+  "version" "4.6.1"
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     "debug" "~4.3.2"
-    "engine.io-client" "~6.2.1"
-    "socket.io-parser" "~4.2.0"
+    "engine.io-client" "~6.4.0"
+    "socket.io-parser" "~4.2.1"
 
-"socket.io-parser@~4.2.0":
-  "integrity" "sha512-tLfmEwcEwnlQTxFB7jibL/q2+q8dlVQzj4JdRLJ/W/G1+Fu9VSxCx1Lo+n1HvXxKnM//dUuD0xgiA7tQf57Vng=="
-  "resolved" "https://registry.npmjs.org/socket.io-parser/-/socket.io-parser-4.2.0.tgz"
-  "version" "4.2.0"
+"socket.io-parser@~4.2.1":
+  "integrity" "sha512-DJtziuKypFkMMHCm2uIshOYC7QaylbtzQwiMYDuCKy3OPkjLzu4B2vAhTlqipRHHzrI0NJeBAizTK7X+6m1jVw=="
+  "resolved" "https://registry.npmjs.org/socket.io-parser/-/socket.io-parser-4.2.2.tgz"
+  "version" "4.2.2"
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     "debug" "~4.3.1"
@@ -5643,10 +5649,10 @@
   "resolved" "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz"
   "version" "3.4.0"
 
-"uuid@^8.3.2":
-  "integrity" "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
-  "resolved" "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
-  "version" "8.3.2"
+"uuid@^9.0.0":
+  "integrity" "sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-9.0.0.tgz"
+  "version" "9.0.0"
 
 "v8-compile-cache@^2.0.3":
   "integrity" "sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA=="
@@ -5777,10 +5783,10 @@
   "resolved" "https://registry.npmjs.org/ws/-/ws-7.4.6.tgz"
   "version" "7.4.6"
 
-"ws@~8.2.3":
-  "integrity" "sha512-wBuoj1BDpC6ZQ1B7DWQBYVLphPWkm8i9Y0/3YdHjHKHiohOJ1ws+3OccDWtH+PoC9DZD5WOTrJvNbWvjS6JWaA=="
-  "resolved" "https://registry.npmjs.org/ws/-/ws-8.2.3.tgz"
-  "version" "8.2.3"
+"ws@~8.11.0":
+  "integrity" "sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg=="
+  "resolved" "https://registry.npmjs.org/ws/-/ws-8.11.0.tgz"
+  "version" "8.11.0"
 
 "ws@6.2.1":
   "integrity" "sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA=="

@@ -74,7 +74,7 @@
     "yarpm": "^1.1.1"
   },
   "dependencies": {
-    "@open-wa/wa-automate-socket-client": "^2.2.0",
+    "@open-wa/wa-automate-socket-client": "^3.1.0",
     "@open-wa/wa-automate-types-only": "*"
   },
   "jest": {

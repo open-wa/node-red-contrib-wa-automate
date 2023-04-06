@@ -673,10 +673,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     "fastq" "^1.6.0"
 
-"@open-wa/wa-automate-socket-client@^3.1.0":
-  "integrity" "sha512-ZxXmFQenDD/0Ta+N5Q67iEH58JEB85DAO4Vgcgeod0LkXwCYTwAam+dpZ17P2TKrrhvtA3wtBXXGGwO4QLb4/A=="
-  "resolved" "https://registry.npmjs.org/@open-wa/wa-automate-socket-client/-/wa-automate-socket-client-3.1.0.tgz"
-  "version" "3.1.0"
+"@open-wa/wa-automate-socket-client@^3.2.0":
+  "integrity" "sha512-EvgJRrEqRVi10poMOLIpCn4qzzV7icsyEXoMGWuE0JE94IRSaaTiSztaVnw1BElq6RxSxJAWXBg4M+KgIzv+Qg=="
+  "resolved" "https://registry.npmjs.org/@open-wa/wa-automate-socket-client/-/wa-automate-socket-client-3.2.0.tgz"
+  "version" "3.2.0"
   dependencies:
     "@discordjs/collection" "^0.5.0"
     "@open-wa/wa-automate-types-only" "*"
